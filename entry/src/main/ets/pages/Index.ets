@@ -9,6 +9,7 @@ struct Index {
         Text(this.message)
           .fontSize(40)
           .fontWeight(FontWeight.Bold)
+          .fontColor(Color.White)
       }
       .width('100%')
     }
