@@ -1,0 +1,163 @@
+{
+  "version": "1.0",
+  "workerIdList": [
+    -1
+  ],
+  "metrics": [
+    {
+      "type": "build_line",
+      "endTime": 1717148949072,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "init",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148949070
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148949086,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "init",
+      "taskPath": "Healthy",
+      "workerId": -1,
+      "startTime": 1717148949086
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148992478,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "default@PreBuild",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992104
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148992524,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "default@MergeProfile",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992501
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148992549,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "default@GenerateLoaderJson",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992541
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148992681,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "default@ProcessProfile",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992555
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148992690,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "default@PreviewProcessResource",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992685
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148992856,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "default@PreviewCompileResource",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992693
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148992860,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "default@PreviewHookCompileResource",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992860
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148992872,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "default@ReplacePreviewerPage",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992863
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148992874,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "buildPreviewerResource",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992873
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148992879,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "default@PreviewUpdateAssets",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992876
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148997816,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "default@PreviewArkTS",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148992881
+    },
+    {
+      "type": "build_line",
+      "endTime": 1717148997822,
+      "status": "closed",
+      "children": [],
+      "name": "overallTime",
+      "taskName": "PreviewBuild",
+      "taskPath": "entry",
+      "workerId": -1,
+      "startTime": 1717148997822
+    }
+  ],
+  "workLog": []
+}

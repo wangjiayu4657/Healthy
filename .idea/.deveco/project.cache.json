@@ -1,0 +1,13 @@
+{
+	"BuildOptions":{
+		"BUNDLE_NAME":"com.example.healthy",
+		"BUILD_PATH":{
+			"OUTPUT_PATH":"/Users/wangjiayu/Desktop/HarmonyOS/Healthy/Healthy/build/outputs/default"
+		},
+		"SELECT_BUILD_PRODUCT":"default"
+	},
+	"CommonInfo":{
+		"project.ide.version":"3.1.0.501",
+		"current.select.product":"default"
+	}
+}
