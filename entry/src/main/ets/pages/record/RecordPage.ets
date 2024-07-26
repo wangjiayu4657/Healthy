@@ -1,6 +1,9 @@
+
+//记录
 @Entry
 @Component
-struct Index {
+export default struct RecordPage {
+  static routeUrl: string = 'pages/record/RecordPage'
   @State message: string = 'Hello World';
 
   build() {

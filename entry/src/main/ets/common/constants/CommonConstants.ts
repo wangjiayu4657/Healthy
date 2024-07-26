@@ -1,10 +1,11 @@
 
 export class CommonConstants {
   static readonly RDB_NAME: string = 'HealthyLife.db'; // db name
+  static readonly PREFERENCE_NAME: string = 'Healthy_Preference';
 
   // THOUSANDTH
   static readonly THOUSANDTH_15: string = '1.5%'; // ‘1.5%’
-  static readonly THOUSANDTH_12: string = '2.2%'; // ‘2.2%’
+  static readonly THOUSANDTH_22: string = '2.2%'; // ‘2.2%’
   static readonly THOUSANDTH_33: string = '3.3%'; // ‘3.3%’
   static readonly THOUSANDTH_50: string = '5%'; // ‘5%’
   static readonly THOUSANDTH_66: string = '6.6%'; // ‘6.6%’
@@ -75,30 +76,24 @@ export class CommonConstants {
   static readonly BORDER_RADIUS_PERCENT_50: string = '50%';
 
   // duration
-  static readonly DURATION_1000: number = 1000; // 1000ms
-  static readonly DURATION_800: number = 800; // 700ms
   static readonly DURATION_100: number = 100; // 100ms
+  static readonly DURATION_800: number = 800; // 800ms
+  static readonly DURATION_1000: number = 1000; // 1000ms
 
   // space
   static readonly SPACE_2: number = 2;
-
-  static readonly SPACE_4: number = 4;
-
+  static readonly SPACE_4: number = 4
   static readonly SPACE_6: number = 6;
-
   static readonly SPACE_8: number = 8;
-
   static readonly SPACE_10: number = 10;
-
   static readonly SPACE_12: number = 12;
+  static readonly SPACE_15: number = 15;
+
 
   // global data key
   static readonly H_STORE: string = 'HeimaHealthyStore';
-
   static readonly RECORD_DATE: string = 'selectedDate';
-
   static readonly PACKAGE_NAME: string = 'com.itheima.healthylife';
-
   static readonly ENTRY_ABILITY: string = 'EntryAbility';
 
   /**
