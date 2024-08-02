@@ -1,23 +1,23 @@
-import StatisticsCard from '../../views/record/StatisticsCard';
+import StatisticsCard from './StatisticsCard';
+import DietList from './DietList'
+
 
 //记录
-@Entry
 @Component
 export default struct RecordPage {
   static routeUrl: string = 'pages/record/RecordPage'
-  @State message: string = 'Hello World';
 
   build() {
     Column({space: 10}) {
       //搜索
       this.SearchHeaderBuilder()
-      Column() {
-        //统计卡片
-        StatisticsCard()
-
-        //列表
-
-      }
+      //统计卡片
+      StatisticsCard().width('94%')
+      //列表
+      DietList()
+        .width('94%')
+        .layoutWeight(1)
+        .margin({top: 5})
     }
     .width('100%')
     .height('100%')
@@ -39,6 +39,6 @@ export default struct RecordPage {
       }
     }
     .width('100%')
-    .padding(15)
+    .padding({top: 15, left: 15, right: 15})
   }
 }

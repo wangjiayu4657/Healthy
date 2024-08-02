@@ -3,7 +3,7 @@ import PreferencesUtil from '../../common/utils/PreferencesUtil'
 import PrivateProtocolDialog from '../../views/welcome/PrivateProtocolDialog'
 import { JSON } from '@kit.ArkTS'
 import { router } from '@kit.ArkUI'
-import IndexPage from '../main/IndexPage'
+import { IndexPage } from '../main/IndexPage'
 import { common } from '@kit.AbilityKit'
 
 

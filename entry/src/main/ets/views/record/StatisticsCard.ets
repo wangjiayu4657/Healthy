@@ -34,7 +34,7 @@ export default struct StatisticsCard {
       })
       .offset({y: -6})
     }
-    .width('94%')
-
+    .width('100%')
+    .height(220)
   }
 }

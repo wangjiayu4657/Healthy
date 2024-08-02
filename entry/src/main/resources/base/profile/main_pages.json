@@ -1,9 +1,6 @@
 {
   "src": [
     "pages/welcome/WelcomePage",
-    "pages/record/RecordPage",
-    "pages/discover/DiscoverPage",
-    "pages/profile/ProfilePage",
     "pages/main/IndexPage"
   ]
 }
