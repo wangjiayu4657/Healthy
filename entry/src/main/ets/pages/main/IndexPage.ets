@@ -1,14 +1,11 @@
 import RecordPage from '../../views/record/RecordPage';
 import DiscoverPage from '../../views/discover/DiscoverPage'
 import ProfilePage from '../../views/profile/ProfilePage';
-import { TabModel } from '../../models/TabModel';
-import UPTabContent from '../../common/componet/UPTabContent';
+
 
 @Entry
 @Component
-export struct IndexPage {
-  static routeName:string = 'pages/main/IndexPage'
-
+struct IndexPage {
   @State idx: number = 0
 
   build() {
@@ -28,10 +25,7 @@ export struct IndexPage {
     .width('100%')
     .height('100%')
     .barHeight(88)
-    .onChange((index:number) => {
-      this.idx = index
-      console.log('index == ', index)
-    })
+    .onChange((index:number) => this.idx = index)
   }
 
   //自定义底部tab组件

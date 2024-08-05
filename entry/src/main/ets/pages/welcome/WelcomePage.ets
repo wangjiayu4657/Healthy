@@ -3,7 +3,7 @@ import PreferencesUtil from '../../common/utils/PreferencesUtil'
 import PrivateProtocolDialog from '../../views/welcome/PrivateProtocolDialog'
 import { JSON } from '@kit.ArkTS'
 import { router } from '@kit.ArkUI'
-import { IndexPage } from '../main/IndexPage'
+// import { IndexPage } from '../main/IndexPage'
 import { common } from '@kit.AbilityKit'
 
 
@@ -26,7 +26,7 @@ struct WelcomePage {
     let state = await PreferencesUtil.fetch(CommonConstants.PREFERENCE_NAME,PRIVATE_PROTOCOL_STATE,false)
     console.log('testTag', state)
     if(state) {
-      router.replaceUrl({url: IndexPage.routeName})
+      router.replaceUrl({url: 'pages/main/IndexPage'})
     } else {
       this.dialogCtrl.open()
     }
@@ -38,7 +38,7 @@ struct WelcomePage {
       .catch((err:object) => console.log('testTag','用户隐私协议同意状态保存失败err:',JSON.stringify(err)))
 
     //跳转首页
-    router.replaceUrl({url: IndexPage.routeName})
+    router.replaceUrl({url: 'pages/main/IndexPage'})
   }
 
   disAgree() {

@@ -4,6 +4,7 @@ import { router } from '@kit.ArkUI'
 export default struct NavHeader {
   title?: ResourceStr
   btnTitle?: ResourceStr
+  color?:ResourceStr = '#36D'
 
   @BuilderParam headBuilder: () => void = this.backBtn
   @BuilderParam tailBuilder: () => void = this.moreBtn
@@ -24,7 +25,7 @@ export default struct NavHeader {
     .width('100%')
     .height(80)
     .padding({left: 5, right: 15})
-    .backgroundColor('#36D')
+    .backgroundColor(this.color)
     .justifyContent(FlexAlign.SpaceAround)
   }
 

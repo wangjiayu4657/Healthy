@@ -18,7 +18,6 @@ export default struct NutritionCard {
   //脂肪摄入量上限
   fatLimit:number = CommonConstants.RECOMMEND_FAT
 
-
   build() {
     Row() {
       this.CardItem(this.carbon, this.carbonLimit,'碳水化合物',$r('app.color.carbon_color'))

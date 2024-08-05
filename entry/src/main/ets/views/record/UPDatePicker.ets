@@ -4,6 +4,7 @@ import DateUtil from '../../common/utils/DateUtil'
 @Component
 export default struct UPDatePicker {
   @StorageProp('selDateKey') selDate:number = DateUtil.beginTimeOfDay(new Date())
+
   datePickerDialog:CustomDialogController = new CustomDialogController({
     builder: UPDatePickerDialog({selDate: new Date(this.selDate)})
   })
@@ -35,7 +36,7 @@ export default struct UPDatePicker {
 @CustomDialog
 export struct UPDatePickerDialog {
   selDate?:Date = new Date()
-  controller: CustomDialogController
+  controller?: CustomDialogController
 
   build() {
     Column({space: 15}) {
@@ -69,14 +70,14 @@ export struct UPDatePickerDialog {
       Button('取消')
         .width(120)
         .backgroundColor($r('app.color.light_gray'))
-        .onClick(() => this.controller.close())
+        .onClick(() => this.controller?.close())
 
       Button('确定')
         .width(120)
         .backgroundColor($r('app.color.primary_color'))
         .onClick(() => {
           AppStorage.setOrCreate('selDateKey', this.selDate?.getTime())
-          this.controller.close()
+          this.controller?.close()
         })
     }
     .width('100%')

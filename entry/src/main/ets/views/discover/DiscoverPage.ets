@@ -3,7 +3,6 @@ import { DietSubModel } from '../../models/DietModel'
 import FoodListItem from '../record/FoodListItem'
 
 //发现
-// @Preview
 @Component
 export default struct DiscoverPage {
   //饮食列表, 早餐餐/中餐/晚餐/加餐
@@ -61,7 +60,7 @@ export default struct DiscoverPage {
   build() {
     Column() {
       //头部组件
-      NavHeader({title: '发现', tailBuilder: this.tailBuilder})
+      NavHeader({title: '发现',color: $r('app.color.primary_color'), tailBuilder: this.tailBuilder})
       //内容组件
       this.ContentBuilder()
     }
@@ -83,11 +82,12 @@ export default struct DiscoverPage {
       ForEach(['全部','主食','果蔬','肉蛋奶','坚果','其他'], (title:string ,idx:number) => {
         TabContent() {
           this.FoodListBuilder()
-        }.tabBar(title)
+        }.tabBar(this.tabBarItem(title))
       })
     }
     .width('100%')
     .layoutWeight(1)
+    // .barMode(BarMode.Fixed)
     .onChange((idx:number) => {
       console.log(idx.toString())
     })
@@ -108,6 +108,16 @@ export default struct DiscoverPage {
     .width('100%')
     .height('100%')
     .scrollBar(BarState.Off)
+  }
+
+  //tabBar item
+  @Builder
+  tabBarItem(title:string) {
+    Column({space: 4}) {
+      Text(title).fontColor($r('app.color.primary_color'))
+      Divider().color($r('app.color.primary_color'))
+    }
+    .width(50)
   }
 
   //添加按钮
