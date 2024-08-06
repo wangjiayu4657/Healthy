@@ -1,6 +1,7 @@
 {
   "src": [
     "pages/welcome/WelcomePage",
-    "pages/main/IndexPage"
+    "pages/main/IndexPage",
+    "pages/detail/RecordIndexDetail"
   ]
 }

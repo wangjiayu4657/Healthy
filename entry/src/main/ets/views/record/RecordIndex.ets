@@ -1,6 +1,7 @@
 import StatisticsCard from './StatisticsCard';
 import { DietModel, DietSubModel } from '../../models/DietModel'
 import FoodListItem from './FoodListItem'
+import { router } from '@kit.ArkUI';
 
 @Extend(Text) function greyTextStyle(color:ResourceStr = $r('app.color.light_gray')) {
   .fontSize(14)
@@ -141,11 +142,16 @@ export default struct RecordPage {
             ListItem() {
               FoodListItem({food: food})
             }
+            .onClick(() => {
+              console.log(food.foodName)
+              router.pushUrl({url: 'pages/detail/RecordIndexDetail', params:food})
+            })
           })
         }
       })
     }
     .width('94%')
+    .height('100%')
     .layoutWeight(1)
     .sticky(StickyStyle.Header|StickyStyle.Footer)
     .scrollBar(BarState.Off)

@@ -1,3 +1,4 @@
+import ScreenConstants from '../../common/constants/ScreenConstants'
 import CalorieCard from './CalorieCard'
 import NutritionCard from './NutritionCard'
 import UPDatePicker from './UPDatePicker'
@@ -6,6 +7,7 @@ import UPDatePicker from './UPDatePicker'
 @Component
 export default struct StatisticsCard {
   private swiperController: SwiperController = new SwiperController()
+  @StorageProp(ScreenConstants.CURRENT_SCREEN) screenType:string = ScreenConstants.SCREEN_SM
 
   build() {
     RelativeContainer() {
@@ -25,8 +27,8 @@ export default struct StatisticsCard {
       }
       .width('100%')
       .height(180)
-      .itemSpace(5)
-      .indicator( new DotIndicator().selectedItemWidth(16))
+      .displayCount(this.screenType === 'lg' ? 2 : 1)
+      .indicator(this.screenType === 'lg' ? false : new DotIndicator().selectedItemWidth(16))
       .alignRules({
         top: {anchor: 'datePickerId', align: VerticalAlign.Bottom},
         left: {anchor: '__container__', align: HorizontalAlign.Start},

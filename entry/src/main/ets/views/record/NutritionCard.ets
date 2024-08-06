@@ -26,7 +26,7 @@ export default struct NutritionCard {
     }
     .width('100%')
     .padding({bottom: 10})
-    .borderRadius(12)
+    // .borderRadius(12)
     .backgroundColor(Color.White)
     .justifyContent(FlexAlign.SpaceEvenly)
   }
