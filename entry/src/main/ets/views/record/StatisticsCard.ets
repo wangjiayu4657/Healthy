@@ -27,8 +27,8 @@ export default struct StatisticsCard {
       }
       .width('100%')
       .height(180)
-      .displayCount(this.screenType === 'lg' ? 2 : 1)
-      .indicator(this.screenType === 'lg' ? false : new DotIndicator().selectedItemWidth(16))
+      .displayCount(this.screenType === ScreenConstants.SCREEN_LG ? 2 : 1)
+      .indicator(this.screenType === ScreenConstants.SCREEN_LG ? false : new DotIndicator().selectedItemWidth(16))
       .alignRules({
         top: {anchor: 'datePickerId', align: VerticalAlign.Bottom},
         left: {anchor: '__container__', align: HorizontalAlign.Start},

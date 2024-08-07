@@ -26,13 +26,13 @@ export default struct NutritionCard {
     }
     .width('100%')
     .padding({bottom: 10})
-    // .borderRadius(12)
     .backgroundColor(Color.White)
     .justifyContent(FlexAlign.SpaceEvenly)
   }
 
   //统计项
-  @Builder CardItem(value:number, valueLimit:number, desc:string, color:ResourceStr) {
+  @Builder
+  CardItem(value:number, valueLimit:number, desc:string, color:ResourceStr) {
     Column({space: 4}) {
       Stack() {
         //进度条
