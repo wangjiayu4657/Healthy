@@ -1,7 +1,9 @@
 import NavHeader from '../../common/componet/NavHeader'
-import { DietSubModel } from '../../models/DietModel'
 import FoodListItem from '../../views/record/FoodListItem'
 import OperationPanel from '../../views/record/OperationPanel'
+import RecordViewModel  from '../../viewmodels/RecordViewModel'
+import { CategoryType, RecordGroupModel, RecordModel, TabModel } from '../../models/RecordModel'
+import { router } from '@kit.ArkUI'
 
 //发现
 @Entry
@@ -9,58 +11,21 @@ import OperationPanel from '../../views/record/OperationPanel'
 struct RecordIndexDetail {
   @State selIdx:number = 0
   @State isShow:boolean = false
+  @State item:RecordModel = RecordViewModel.recordList[0]
 
   //饮食列表, 早餐餐/中餐/晚餐/加餐
-  private foods:DietSubModel[] = [
-    {
-      image: $r('app.media.toast'),
-      foodName: '全麦吐司',
-      foodCount: '1片',
-      calory: 91
-    },
-    {
-      image: $r('app.media.milk'),
-      foodName: '牛奶',
-      foodCount: "150毫升",
-      calory: 99
-    },
-    {
-      image: $r('app.media.rice'),
-      foodName: '米饭',
-      foodCount: "1碗",
-      calory: 182
-    },
-    {
-      image: $r('app.media.fish'),
-      foodName: '鱼肉',
-      foodCount: '1条',
-      calory: 139
-    },
-    {
-      image: $r('app.media.soybean_milk'),
-      foodName: '豆浆',
-      foodCount: "1碗",
-      calory: 98
-    },
-    {
-      image: $r('app.media.pitaya'),
-      foodName: '火龙果',
-      foodCount: '1个',
-      calory: 109
-    },
-    {
-      image: $r('app.media.yogurt'),
-      foodName: '酸奶',
-      foodCount: "1瓶",
-      calory: 182
-    },
-    {
-      image: $r('app.media.strawberry'),
-      foodName: '草莓',
-      foodCount: '10个',
-      calory: 127
-    }
-  ]
+  @State source:RecordModel[] = RecordViewModel.recordList
+
+  private tabs:TabModel[] = RecordViewModel.foodTabList
+  private type:CategoryType = CategoryType.FOOD
+  private groupItem:RecordGroupModel = router.getParams() as RecordGroupModel
+
+  aboutToAppear(): void {
+    this.type = this.groupItem.info.type
+    this.source = (this.type === CategoryType.FOOD) ? RecordViewModel.foodList : RecordViewModel.sportList
+    this.tabs = (this.type === CategoryType.FOOD) ? RecordViewModel.foodTabList : RecordViewModel.sportTabList
+  }
+
 
   build() {
     Column() {
@@ -68,7 +33,7 @@ struct RecordIndexDetail {
       NavHeader({
         title: '详情',
         color: $r('app.color.primary_color'),
-        tailBuilder: this.tailBuilder
+        tailBuilder:() => { this.tailBuilder() }
       })
 
       //内容组件
@@ -92,24 +57,26 @@ struct RecordIndexDetail {
   //头部组件-尾部组件
   @Builder
   tailBuilder() {
-    Text('早餐').fontColor(Color.White)
+    Text(this.groupItem.info.name).fontColor(Color.White)
   }
 
   //内容组件
   @Builder
   contentBuilder() {
     Tabs() {
-      ForEach(['全部','主食','果蔬','肉蛋奶','坚果','其他'], (title:string ,idx:number) => {
+      ForEach(this.tabs, (tab:TabModel ,idx:number) => {
         TabContent() {
           this.foodListBuilder()
-        }.tabBar(this.tabBarItem(title, idx))
+        }.tabBar(this.tabBarItem(tab.info.name, idx))
       })
     }
     .width('100%')
     .layoutWeight(1)
+    .barMode(this.tabs.length > 6 ? BarMode.Scrollable : BarMode.Fixed)
     .onChange((idx:number) => {
-      console.log(idx.toString())
       this.selIdx = idx
+      let tab:TabModel = this.tabs[idx]
+      this.source = RecordViewModel.filterRecordListBy(this.type, tab.info.id)
     })
   }
 
@@ -117,9 +84,9 @@ struct RecordIndexDetail {
   @Builder
   foodListBuilder() {
     List() {
-      ForEach(this.foods, (food:DietSubModel) => {
+      ForEach(this.source, (recordModel:RecordModel) => {
         ListItem() {
-          FoodListItem({food: food, tailBuilder: () => { this.addBtnBuilder() }})
+          FoodListItem({recordModel: recordModel, tailBuilder: () => { this.addBtnBuilder(recordModel) }})
         }
         .swipeAction({end:{builder:this.delBtnBuilder, onAction: () => {
           console.log('滑动删除')
@@ -133,17 +100,17 @@ struct RecordIndexDetail {
 
   //tabBar item
   @Builder
-  tabBarItem(title:string, idx:number) {
+  tabBarItem(title:ResourceStr, idx:number) {
     Column({space: 4}) {
       Text(title).fontColor(this.selIdx == idx ? $r('app.color.primary_color') : $r('app.color.light_gray'))
-      Divider().color(this.selIdx == idx ? $r('app.color.primary_color') : $r('app.color.light_gray'))
+      Divider().color(this.selIdx == idx ? $r('app.color.primary_color') : Color.Transparent)
     }
-    .width(50)
+    .width(80)
   }
 
   //添加按钮
   @Builder
-  addBtnBuilder() {
+  addBtnBuilder(record:RecordModel) {
     Image($r('app.media.ic_public_add_norm_filled'))
       .size({width:24, height: 24})
       .fillColor($r('app.color.primary_color'))
@@ -151,6 +118,7 @@ struct RecordIndexDetail {
       .onClick(() => {
         this.isShow = true
         console.log('点击添加', this.isShow)
+        this.item = record
       })
   }
 
@@ -175,6 +143,7 @@ struct RecordIndexDetail {
   @Builder operationPanelBuilder() {
     Column() {
       OperationPanel({
+        recordModel: this.item,
         cancel:() => {
           this.isShow = false
         },

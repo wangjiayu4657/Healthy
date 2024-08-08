@@ -1,3 +1,4 @@
+import { RecordModel } from '../../models/RecordModel'
 
 //操作面板
 // @Preview
@@ -5,6 +6,8 @@
 export default struct OperationPanel {
   //数量
   @State amount:number = 1.0
+  @Link recordModel:RecordModel
+
   //取消
   cancel?:() => void
   //提交
@@ -47,10 +50,10 @@ export default struct OperationPanel {
   foodInformationBuilder() {
     Column({space: 8}){
       //食物图片
-      Image($r('app.media.toast')).width(120)
+      Image(this.recordModel.info.image).width(120)
 
       //食物名称
-      Text('全麦吐司')
+      Text(this.recordModel.info.name)
         .fontSize(16)
         .fontWeight(FontWeight.Bold)
         .borderRadius(4)
@@ -65,10 +68,10 @@ export default struct OperationPanel {
 
       //食物详细信息
       Row({space: 8}) {
-        this.foodDetailInformationBuilder('热量 (千卡)', 91.0)
-        this.foodDetailInformationBuilder('碳水 (克)', 15.5)
-        this.foodDetailInformationBuilder('蛋白质 (克)', 4.4)
-        this.foodDetailInformationBuilder('脂肪 (克)', 1.3)
+        this.foodDetailInformationBuilder('热量 (千卡)', this.recordModel.info.calorie)
+        this.foodDetailInformationBuilder('碳水 (克)', this.recordModel.info.carbon ?? 0)
+        this.foodDetailInformationBuilder('蛋白质 (克)', this.recordModel.info.protein ?? 0)
+        this.foodDetailInformationBuilder('脂肪 (克)', this.recordModel.info.fat ?? 0)
       }
 
       //分割线

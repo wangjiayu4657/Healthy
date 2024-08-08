@@ -1,6 +1,15 @@
 
 export class CommonConstants {
-  static readonly RDB_NAME: string = 'HealthyLife.db'; // db name
+  static readonly CREATE_TABLE_SQL: string = `
+   CREATE TABLE IF NOT EXISTS record (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     type_id INTEGER NOT NULL,
+     item_id INTEGER NOT NULL,
+     amount DOUBLE NOT NULL,
+     create_time INTEGER NOT NULL
+   )
+ `
+  static readonly DB_NAME: string = 'HealthyLife.db'; // db name
   static readonly PREFERENCE_NAME: string = 'Healthy_Preference';
 
   // THOUSANDTH

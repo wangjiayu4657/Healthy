@@ -98,7 +98,7 @@ export default struct DiscoverPage {
     List() {
       ForEach(this.foods, (food:DietSubModel, idx:number) => {
         ListItem() {
-          FoodListItem({food: food, tailBuilder: this.addBtnBuilder})
+          FoodListItem({recordModel: undefined, tailBuilder: this.addBtnBuilder})
         }
         .swipeAction({end:{builder:this.delBtnBuilder, onAction: () => {
             console.log('滑动删除')

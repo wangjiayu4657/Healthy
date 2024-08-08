@@ -3,6 +3,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import PreferencesUtil from '../common/utils/PreferencesUtil';
 import { CommonConstants } from '../common/constants/CommonConstants';
+import DbUtil from '../common/utils/DbUtil';
 
 
 export default class EntryAbility extends UIAbility {
@@ -11,6 +12,9 @@ export default class EntryAbility extends UIAbility {
 
     //初始化用户首选项
     PreferencesUtil.initPreferences(this.context,CommonConstants.PREFERENCE_NAME)
+
+    //初始化数据库
+    DbUtil.initDbUtil(this.context, CommonConstants.DB_NAME, CommonConstants.CREATE_TABLE_SQL)
   }
 
   onDestroy(): void {

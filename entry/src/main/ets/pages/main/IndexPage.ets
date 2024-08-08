@@ -11,8 +11,10 @@ import ScreenInfo from '../../common/bean/ScreenInfo';
 struct IndexPage {
   @State idx: number = 0
   @StorageProp(ScreenConstants.CURRENT_SCREEN) screenType:string = ScreenConstants.SCREEN_SM
+
   private screenUtil:ScreenUtil = new ScreenUtil()
   private screenInfo:ScreenInfo<boolean> = new ScreenInfo({sm: false, md: true, lg: true})
+
 
   aboutToAppear(): void {
     this.screenUtil.register()
@@ -42,6 +44,7 @@ struct IndexPage {
     .barHeight(this.getBarHeight())
     .onChange((index:number) => this.idx = index)
     .vertical(this.screenInfo.getValue(this.screenType))
+
   }
 
   //自定义底部tab组件

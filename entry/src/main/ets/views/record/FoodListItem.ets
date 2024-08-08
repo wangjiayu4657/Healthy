@@ -1,20 +1,21 @@
-import { DietSubModel } from '../../models/DietModel'
+import { RecordModel } from '../../models/RecordModel'
 
 @Component
 export default struct FoodListItem {
-  food?:DietSubModel
+  recordModel?:RecordModel
+  @Prop amount:number = 1
   @BuilderParam tailBuilder:() => void = this.tBuilder
 
   build() {
     Row({space: 8}) {
       //食物图片
-      Image(this.food?.image).width(48)
+      Image(this.recordModel?.info.image).width(48)
       //食物信息
       Column({space: 8}) {
         //食物名称
-        Text(this.food?.foodName).fontSize(16).fontWeight(FontWeight.Medium)
+        Text(this.recordModel?.info.name).fontSize(16).fontWeight(FontWeight.Medium)
         //食物数量
-        Text(this.food?.foodCount).greyTextStyle()
+        Text(`${this.amount}${this.recordModel?.info.unit}`).greyTextStyle()
       }
       Blank()
       //尾部的组件, 默认为食物热量信息
@@ -27,7 +28,7 @@ export default struct FoodListItem {
 
   @Builder
   tBuilder() {
-    Text(`${this.food?.calory}千卡`).greyTextStyle()
+    Text(`${this.recordModel?.info.calorie}千卡`).greyTextStyle()
   }
 }
 
