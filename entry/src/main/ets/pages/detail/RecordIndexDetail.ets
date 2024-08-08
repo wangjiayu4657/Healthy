@@ -3,7 +3,7 @@ import FoodListItem from '../../views/record/FoodListItem'
 import OperationPanel from '../../views/record/OperationPanel'
 import RecordViewModel  from '../../viewmodels/RecordViewModel'
 import { CategoryType, RecordGroupModel, RecordModel, TabModel } from '../../models/RecordModel'
-import { router } from '@kit.ArkUI'
+import { promptAction, router } from '@kit.ArkUI'
 
 //发现
 @Entry
@@ -47,10 +47,7 @@ struct RecordIndexDetail {
       blurStyle:BlurStyle.Thick,
       showClose:false,
       preferType: SheetType.CENTER,
-      shouldDismiss:((sheetDismiss: SheetDismiss)=> {
-        console.log("bind sheet shouldDismiss")
-        sheetDismiss.dismiss()
-      }),
+      shouldDismiss:((sheetDismiss: SheetDismiss) => sheetDismiss.dismiss()),
     })
   }
 
@@ -86,7 +83,7 @@ struct RecordIndexDetail {
     List() {
       ForEach(this.source, (recordModel:RecordModel) => {
         ListItem() {
-          FoodListItem({recordModel: recordModel, tailBuilder: () => { this.addBtnBuilder(recordModel) }})
+          FoodListItem({recordModel: recordModel, amount: 1, tailBuilder: () => { this.addBtnBuilder(recordModel) }})
         }
         .swipeAction({end:{builder:this.delBtnBuilder, onAction: () => {
           console.log('滑动删除')
@@ -149,7 +146,13 @@ struct RecordIndexDetail {
         },
         submit:(amount:number) => {
           console.log('amount == ', amount)
+          if(amount === 0) {
+            promptAction.showToast({message: '数量不能为空', alignment: Alignment.Center})
+            return
+          }
           this.isShow = false
+          this.item.info.count = amount
+          RecordViewModel.insertRecord(this.item, this.groupItem.info.id)
         }
       })
     }

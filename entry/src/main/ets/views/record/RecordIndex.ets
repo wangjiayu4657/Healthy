@@ -12,7 +12,18 @@ import RecordViewModel from '../../viewmodels/RecordViewModel';
 //记录
 @Component
 export default struct RecordPage {
+  @Prop @Watch('handlerPageShow') isPageShow:boolean
   @State groupList:RecordGroupModel[] = RecordViewModel.recordGroupList
+
+  handlerPageShow() {
+    if(this.isPageShow) {
+      this.aboutToAppear()
+    }
+  }
+
+  aboutToAppear(): void {
+    this.groupList = RecordViewModel.recordGroupList
+  }
 
   build() {
     Column({space: 10}) {
@@ -75,7 +86,8 @@ export default struct RecordPage {
   }
 
   //列表分组组头
-  @Builder foodItemHeader(groupModel:RecordGroupModel) {
+  @Builder
+  foodItemHeader(groupModel:RecordGroupModel) {
     Row({space: 4}) {
       //图标
       Image(groupModel.info.icon).width(24)
@@ -104,7 +116,8 @@ export default struct RecordPage {
   }
 
   //列表分组组尾
-  @Builder foodItemFooter() {
+  @Builder
+  foodItemFooter() {
     Divider()
       .color('#F1F2F3')
       .strokeWidth(10)

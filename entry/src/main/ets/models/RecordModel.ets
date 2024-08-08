@@ -7,7 +7,7 @@ export enum CategoryType {
 
 //食物类型枚举
 export enum CategoryId {
-  STAPLE = 0,      //主食
+  STAPLE = 0,  //主食
   FRUIT,       //蔬果
   MEAT,        //肉蛋奶
   NUT,         //坚果
@@ -24,16 +24,17 @@ export enum CategoryId {
 
 //声明记录数据模型的属性接口
 declare interface RecordInfo {
-  id: number,             //id
-  name: ResourceStr,      //名称
-  image: ResourceStr,     //图片
-  type: CategoryType,     //类型
-  categoryId: number,     //分类id
-  calorie: number,        //卡路里
-  unit: ResourceStr,      //单位
-  carbon?: number,        //碳水含量，单位（克)
-  protein?: number,       //蛋白质含量，单位（克）
-  fat?: number,           //脂肪含量，单位（克）
+  id: number             //id
+  name: ResourceStr      //名称
+  image: ResourceStr     //图片
+  type: CategoryType     //类型
+  categoryId: number     //分类id
+  calorie: number        //卡路里
+  unit: ResourceStr      //单位
+  count: number          //数量
+  carbon?: number        //碳水含量，单位（克)
+  protein?: number       //蛋白质含量，单位（克）
+  fat?: number           //脂肪含量，单位（克）
 }
 
 //记录数据模型

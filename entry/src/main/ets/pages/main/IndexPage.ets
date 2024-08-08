@@ -10,6 +10,7 @@ import ScreenInfo from '../../common/bean/ScreenInfo';
 @Component
 struct IndexPage {
   @State idx: number = 0
+  @State isPageShow:boolean = false
   @StorageProp(ScreenConstants.CURRENT_SCREEN) screenType:string = ScreenConstants.SCREEN_SM
 
   private screenUtil:ScreenUtil = new ScreenUtil()
@@ -24,10 +25,18 @@ struct IndexPage {
     this.screenUtil.unregister()
   }
 
+  onPageShow(): void {
+    this.isPageShow = true
+  }
+
+  onPageHide(): void {
+    this.isPageShow = false
+  }
+
   build() {
     Tabs({barPosition:ScreenConstants.BAR_POSITION.getValue(this.screenType)}) {
       TabContent() {
-        RecordPage()
+        RecordPage({isPageShow:this.isPageShow})
       }.tabBar(this.TabBarBuilder($r('app.media.ic_calendar'), '记录', 0))
 
       TabContent() {

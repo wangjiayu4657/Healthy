@@ -3,8 +3,12 @@ import { RecordModel } from '../../models/RecordModel'
 @Component
 export default struct FoodListItem {
   recordModel?:RecordModel
-  @Prop amount:number = 1
+  amount:number = 0
   @BuilderParam tailBuilder:() => void = this.tBuilder
+
+  aboutToAppear(): void {
+    this.amount = this.amount == 0 ? this.recordModel?.info.count ?? 0 : this.amount
+  }
 
   build() {
     Row({space: 8}) {

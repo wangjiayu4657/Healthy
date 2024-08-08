@@ -116,7 +116,7 @@ export default struct OperationPanel {
           .strokeWidth(1)
           .width(140)
       }
-      Text('片').fontColor($r('app.color.light_gray'))
+      Text(this.recordModel.info.unit).fontColor($r('app.color.light_gray'))
     }
   }
 
