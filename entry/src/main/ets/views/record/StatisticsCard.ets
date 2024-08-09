@@ -9,6 +9,7 @@ export default struct StatisticsCard {
   private swiperController: SwiperController = new SwiperController()
   @StorageProp(ScreenConstants.CURRENT_SCREEN) screenType:string = ScreenConstants.SCREEN_SM
 
+
   build() {
     RelativeContainer() {
       //日期选择

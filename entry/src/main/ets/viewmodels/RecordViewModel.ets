@@ -15,6 +15,7 @@ const COLUMNS: ColumnInfo[] = [
 
 
 class RecordViewModel {
+
    //食物数组
    foodList: RecordModel[] = [
      new RecordModel({id:0, name:'米饭', image:$r('app.media.rice'), type:CategoryType.FOOD, categoryId:CategoryId.STAPLE, unit:'碗', calorie:209, carbon:46.6, protein:4.7, fat:0.5, count:0}),
@@ -132,13 +133,13 @@ class RecordViewModel {
        items?.push(recordModel)
      }
 
-     groupItem.info.calorie = this.calculatingData(items)
+     groupItem.info.calorie = this.calculatingCalorie(items)
    }
 
-   calculatingData(records:RecordModel[]) {
+   calculatingCalorie(records:RecordModel[]) {
       let totalCalorie = 0
       records.forEach((record:RecordModel) => {
-        totalCalorie = (record.info.count ?? 1) * ((record.info.carbon ?? 0) + (record.info.protein ?? 0) + (record.info.fat ?? 0))
+        totalCalorie += (record.info.count ?? 1) * (record.info.calorie)
       })
      return totalCalorie
    }

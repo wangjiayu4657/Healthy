@@ -3,6 +3,7 @@ import FoodListItem from './FoodListItem'
 import { router } from '@kit.ArkUI';
 import { RecordGroupModel, RecordModel } from '../../models/RecordModel';
 import RecordViewModel from '../../viewmodels/RecordViewModel';
+import RecordService from '../../pages/service/RecordService';
 
 @Extend(Text) function greyTextStyle(color:ResourceStr = $r('app.color.light_gray')) {
   .fontSize(14)
@@ -11,9 +12,10 @@ import RecordViewModel from '../../viewmodels/RecordViewModel';
 
 //记录
 @Component
-export default struct RecordPage {
+export default struct RecordIndex {
   @Prop @Watch('handlerPageShow') isPageShow:boolean
   @State groupList:RecordGroupModel[] = RecordViewModel.recordGroupList
+  @Provide recordService: RecordService = new RecordService()
 
   handlerPageShow() {
     if(this.isPageShow) {
@@ -23,6 +25,11 @@ export default struct RecordPage {
 
   aboutToAppear(): void {
     this.groupList = RecordViewModel.recordGroupList
+
+    let tempService = new RecordService()
+    tempService.calculatorRecordData()
+
+    this.recordService = tempService
   }
 
   build() {

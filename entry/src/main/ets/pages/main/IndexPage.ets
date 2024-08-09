@@ -1,9 +1,9 @@
-import RecordPage from '../../views/record/RecordIndex';
 import DiscoverPage from '../../views/discover/DiscoverPage'
 import ProfilePage from '../../views/profile/ProfilePage';
 import ScreenUtil from '../../common/utils/ScreenUtil';
 import ScreenConstants from '../../common/constants/ScreenConstants';
 import ScreenInfo from '../../common/bean/ScreenInfo';
+import RecordIndex from '../../views/record/RecordIndex';
 
 //首页
 @Entry
@@ -36,7 +36,7 @@ struct IndexPage {
   build() {
     Tabs({barPosition:ScreenConstants.BAR_POSITION.getValue(this.screenType)}) {
       TabContent() {
-        RecordPage({isPageShow:this.isPageShow})
+        RecordIndex({isPageShow:this.isPageShow})
       }.tabBar(this.TabBarBuilder($r('app.media.ic_calendar'), '记录', 0))
 
       TabContent() {

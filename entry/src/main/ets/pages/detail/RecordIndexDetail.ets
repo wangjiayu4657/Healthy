@@ -69,13 +69,15 @@ struct RecordIndexDetail {
     }
     .width('100%')
     .layoutWeight(1)
-    .barMode(this.tabs.length > 6 ? BarMode.Scrollable : BarMode.Fixed)
+    .barMode(this.tabs.length > 6 ? BarMode.Scrollable : BarMode.Fixed,{nonScrollableLayoutStyle:LayoutStyle.SPACE_BETWEEN_OR_CENTER})
+    .animationDuration(200)
     .onChange((idx:number) => {
       this.selIdx = idx
       let tab:TabModel = this.tabs[idx]
       this.source = RecordViewModel.filterRecordListBy(this.type, tab.info.id)
     })
   }
+
 
   //列表组件
   @Builder
@@ -158,4 +160,6 @@ struct RecordIndexDetail {
     }
     .width('100%')
   }
+
+
 }

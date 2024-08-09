@@ -83,3 +83,24 @@ export class TabModel {
     this.info = tabInfo
   }
 }
+
+
+//声明统计数据接口字段
+declare interface StatisticsInfo {
+  intake:number          //摄入量
+  consumption:number     //消耗量
+  carbon: number        //碳水含量，单位（克)
+  protein: number       //蛋白质含量，单位（克）
+  fat: number           //脂肪含量，单位（克）
+  delCalorie:number      //剩余摄入量
+}
+
+//统计数据模型
+export class StatisticsModel {
+  info:StatisticsInfo
+
+  constructor(statisticsInfo:StatisticsInfo) {
+    this.info = statisticsInfo
+  }
+}
+
