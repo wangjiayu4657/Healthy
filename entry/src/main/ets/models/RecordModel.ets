@@ -104,3 +104,17 @@ export class StatisticsModel {
   }
 }
 
+// declare interface MyOptions {
+//   name:string
+//   age:number
+// }
+//
+// declare class MyAttribute extends CommonMethod<MyAttribute> {
+//   space(value:number): MyAttribute;
+// }
+//
+// declare interface MyInterface {
+//   (value?: MyOptions): MyAttribute;
+// }
+//
+// declare const MyComp:MyInterface;

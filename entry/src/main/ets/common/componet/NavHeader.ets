@@ -33,7 +33,8 @@ export default struct NavHeader {
   @Builder backBtn() {
     Button() {
       Image($r("app.media.ic_public_back"))
-        .width(30).height(30)
+        .width(30)
+        .height(30)
         .fillColor(Color.White)
         .objectFit(ImageFit.Contain)
     }

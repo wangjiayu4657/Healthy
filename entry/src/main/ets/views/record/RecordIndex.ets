@@ -1,6 +1,6 @@
 import StatisticsCard from './StatisticsCard';
 import FoodListItem from './FoodListItem'
-import { router } from '@kit.ArkUI';
+import { GridRowModifier, router } from '@kit.ArkUI';
 import { RecordGroupModel, RecordModel } from '../../models/RecordModel';
 import RecordViewModel from '../../viewmodels/RecordViewModel';
 import RecordService from '../../pages/service/RecordService';
