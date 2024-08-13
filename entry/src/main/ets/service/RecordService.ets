@@ -1,6 +1,6 @@
-import { CommonConstants } from '../../common/constants/CommonConstants'
-import { CategoryType, RecordGroupModel, RecordModel, StatisticsModel } from '../../models/RecordModel'
-import RecordViewModel from '../../viewmodels/RecordViewModel'
+import { CommonConstants } from '../common/constants/CommonConstants'
+import { CategoryType, RecordGroupModel, RecordModel, StatisticsModel } from '../models/RecordModel'
+import RecordViewModel from '../viewmodels/RecordViewModel'
 
 
 

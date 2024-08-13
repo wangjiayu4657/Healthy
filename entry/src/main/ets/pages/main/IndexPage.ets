@@ -53,7 +53,6 @@ struct IndexPage {
     .barHeight(this.getBarHeight())
     .onChange((index:number) => this.idx = index)
     .vertical(this.screenInfo.getValue(this.screenType))
-
   }
 
   //自定义底部tab组件
@@ -62,7 +61,6 @@ struct IndexPage {
     Column({space: 8}) {
       Image(icon).width(24).fillColor(idx == this.idx ? $r('app.color.primary_color') :  $r('app.color.gray'))
       Text(title).fontSize(14).fontColor(idx == this.idx ? $r('app.color.primary_color') :  $r('app.color.gray'))
-      TextInput()
     }
     .width('100%')
   }

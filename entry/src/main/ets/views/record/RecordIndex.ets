@@ -3,7 +3,7 @@ import FoodListItem from './FoodListItem'
 import { GridRowModifier, router } from '@kit.ArkUI';
 import { RecordGroupModel, RecordModel } from '../../models/RecordModel';
 import RecordViewModel from '../../viewmodels/RecordViewModel';
-import RecordService from '../../pages/service/RecordService';
+import RecordService from '../../service/RecordService';
 
 @Extend(Text) function greyTextStyle(color:ResourceStr = $r('app.color.light_gray')) {
   .fontSize(14)

@@ -1,5 +1,5 @@
 import { CommonConstants } from '../../common/constants/CommonConstants'
-import RecordService from '../../pages/service/RecordService'
+import RecordService from '../../service/RecordService'
 
 declare interface nutritionInfo {
   value:number        //摄入量
