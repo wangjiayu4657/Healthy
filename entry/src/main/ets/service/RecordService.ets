@@ -22,23 +22,23 @@ export default class RecordService {
     let totalCalorie = 0
 
     this.list.forEach((group:RecordGroupModel) => {
-      if(group.info.type == CategoryType.FOOD) {
-        totalIntake += group.info.calorie ?? 0
+      if(group.type == CategoryType.FOOD) {
+        totalIntake += group.calorie ?? 0
 
-        if(group.info.items.length > 0) {
-          this.calculatorNutrition(group.info.items)
+        if(group.items.length > 0) {
+          this.calculatorNutrition(group.items)
         }
       } else {
-        totalConsumption += group.info.calorie ?? 0
+        totalConsumption += group.calorie ?? 0
       }
     })
 
     totalCalorie = this.recommend -totalIntake + totalConsumption
     totalCalorie = totalCalorie > this.recommend ? this.recommend : totalCalorie
 
-    this.statisticModel.info.intake = totalIntake
-    this.statisticModel.info.consumption = totalConsumption
-    this.statisticModel.info.delCalorie = totalCalorie
+    this.statisticModel.intake = totalIntake
+    this.statisticModel.consumption = totalConsumption
+    this.statisticModel.delCalorie = totalCalorie
 
     console.log('statistic === ', JSON.stringify(this.statisticModel))
   }
@@ -46,10 +46,10 @@ export default class RecordService {
   //计算碳水含量,蛋白质含量,脂肪含量
   private calculatorNutrition(list:RecordModel[]) {
     list.forEach((record:RecordModel) => {
-      if(record.info.type == CategoryType.FOOD) {
-        this.statisticModel.info.carbon += record.info.carbon ?? 0
-        this.statisticModel.info.protein += record.info.protein ?? 0
-        this.statisticModel.info.fat += record.info.fat ?? 0
+      if(record.type == CategoryType.FOOD) {
+        this.statisticModel.carbon += record.carbon ?? 0
+        this.statisticModel.protein += record.protein ?? 0
+        this.statisticModel.fat += record.fat ?? 0
       }
     })
   }

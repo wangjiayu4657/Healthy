@@ -21,7 +21,7 @@ struct RecordIndexDetail {
   private groupItem:RecordGroupModel = router.getParams() as RecordGroupModel
 
   aboutToAppear(): void {
-    this.type = this.groupItem.info.type
+    this.type = this.groupItem.type
     this.source = (this.type === CategoryType.FOOD) ? RecordViewModel.foodList : RecordViewModel.sportList
     this.tabs = (this.type === CategoryType.FOOD) ? RecordViewModel.foodTabList : RecordViewModel.sportTabList
   }
@@ -54,7 +54,7 @@ struct RecordIndexDetail {
   //头部组件-尾部组件
   @Builder
   tailBuilder() {
-    Text(this.groupItem.info.name).fontColor(Color.White)
+    Text(this.groupItem.name).fontColor(Color.White)
   }
 
   //内容组件
@@ -64,7 +64,7 @@ struct RecordIndexDetail {
       ForEach(this.tabs, (tab:TabModel ,idx:number) => {
         TabContent() {
           this.foodListBuilder()
-        }.tabBar(this.tabBarItem(tab.info.name, idx))
+        }.tabBar(this.tabBarItem(tab.name, idx))
       })
     }
     .width('100%')
@@ -74,7 +74,7 @@ struct RecordIndexDetail {
     .onChange((idx:number) => {
       this.selIdx = idx
       let tab:TabModel = this.tabs[idx]
-      this.source = RecordViewModel.filterRecordListBy(this.type, tab.info.id)
+      this.source = RecordViewModel.filterRecordListBy(this.type, tab.id)
     })
   }
 
@@ -153,8 +153,8 @@ struct RecordIndexDetail {
             return
           }
           this.isShow = false
-          this.item.info.count = amount
-          RecordViewModel.insertRecord(this.item, this.groupItem.info.id)
+          this.item.count = amount
+          RecordViewModel.insertRecord(this.item, this.groupItem.id)
         }
       })
     }

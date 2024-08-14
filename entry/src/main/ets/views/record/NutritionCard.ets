@@ -23,21 +23,21 @@ export default struct NutritionCard {
   build() {
     Row() {
       this.CardItem({
-        value:this.recordService.statisticModel.info.carbon,
+        value:this.recordService.statisticModel.carbon,
         maxVal:this.maxCarbon,
         desc:'碳水化合物',
         color:$r('app.color.carbon_color')
       })
 
       this.CardItem({
-        value:this.recordService.statisticModel.info.protein,
+        value:this.recordService.statisticModel.protein,
         maxVal:this.maxProtein,
         desc:'蛋白质',
         color:$r('app.color.protein_color')
       })
 
       this.CardItem({
-        value:this.recordService.statisticModel.info.fat,
+        value:this.recordService.statisticModel.fat,
         maxVal:this.maxFat,
         desc:'脂肪',
         color:$r('app.color.fat_color')

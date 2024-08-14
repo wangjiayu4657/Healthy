@@ -39,11 +39,30 @@ declare interface RecordInfo {
 
 //记录数据模型
 export class RecordModel  {
-  //声明的变量
-  info: RecordInfo
+  id: number             //id
+  name: ResourceStr      //名称
+  image: ResourceStr     //图片
+  type: CategoryType     //类型
+  categoryId: number     //分类id
+  calorie: number        //卡路里
+  unit: ResourceStr      //单位
+  count: number          //数量
+  carbon?: number        //碳水含量，单位（克)
+  protein?: number       //蛋白质含量，单位（克）
+  fat?: number           //脂肪含量，单位（克）
 
   constructor(recordInfo:RecordInfo) {
-    this.info = recordInfo
+    this.id = recordInfo.id
+    this.name = recordInfo.name
+    this.image = recordInfo.image
+    this.type = recordInfo.type
+    this.categoryId = recordInfo.categoryId
+    this.calorie = recordInfo.calorie
+    this.unit = recordInfo.unit
+    this.count = recordInfo.count
+    this.carbon = recordInfo.carbon
+    this.protein = recordInfo.protein
+    this.fat = recordInfo.fat
   }
 }
 
@@ -62,10 +81,24 @@ declare interface RecordGroupInfo {
 
 //分组信息数据模型
 export class RecordGroupModel {
-  info:RecordGroupInfo
+  id: number                //id
+  type: CategoryType        //类型
+  name: ResourceStr         //名称
+  icon: ResourceStr         //图标
+  min: number               //推荐最小卡路里
+  max: number               //推荐最大卡路里
+  items: RecordModel[]      //分组下的数据
+  calorie?: number          //组内记录的总热量
 
   constructor(recordGroupInfo: RecordGroupInfo) {
-    this.info = recordGroupInfo
+    this.id = recordGroupInfo.id
+    this.type = recordGroupInfo.type
+    this.name = recordGroupInfo.name
+    this.icon = recordGroupInfo.icon
+    this.min = recordGroupInfo.min
+    this.max = recordGroupInfo.max
+    this.items = recordGroupInfo.items
+    this.calorie = recordGroupInfo.calorie
   }
 }
 
@@ -77,10 +110,12 @@ declare interface TabInfo {
 
 //tab数据模型
 export class TabModel {
-  info:TabInfo
+  id:CategoryId
+  name:ResourceStr
 
   constructor(tabInfo:TabInfo) {
-    this.info = tabInfo
+    this.id = tabInfo.id
+    this.name = tabInfo.name
   }
 }
 
@@ -97,10 +132,20 @@ declare interface StatisticsInfo {
 
 //统计数据模型
 export class StatisticsModel {
-  info:StatisticsInfo
+  intake:number          //摄入量
+  consumption:number     //消耗量
+  carbon: number        //碳水含量，单位（克)
+  protein: number       //蛋白质含量，单位（克）
+  fat: number           //脂肪含量，单位（克）
+  delCalorie:number      //剩余摄入量
 
   constructor(statisticsInfo:StatisticsInfo) {
-    this.info = statisticsInfo
+    this.intake = statisticsInfo.intake
+    this.consumption = statisticsInfo.consumption
+    this.carbon = statisticsInfo.carbon
+    this.protein = statisticsInfo.protein
+    this.fat = statisticsInfo.fat
+    this.delCalorie = statisticsInfo.delCalorie
   }
 }
 

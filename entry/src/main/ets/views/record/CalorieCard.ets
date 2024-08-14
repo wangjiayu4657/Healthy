@@ -16,18 +16,18 @@ export default struct CalorieCard {
     Row() {
       this.CardItem({
         label:'饮食摄入',
-        value:this.recordService.statisticModel.info.intake
+        value:this.recordService.statisticModel.intake
       })
 
       this.ResidualIntakeCardItem({
         label:'还可以吃',
-        value:this.recordService.statisticModel.info.delCalorie,
+        value:this.recordService.statisticModel.delCalorie,
         tip:`推荐${CommonConstants.RECOMMEND_CALORIE}`
       })
 
       this.CardItem({
         label:'运动消耗',
-        value:this.recordService.statisticModel.info.consumption
+        value:this.recordService.statisticModel.consumption
       })
     }
     .width('100%')
@@ -74,7 +74,7 @@ export default struct CalorieCard {
 
   //还可以继续摄入的量
   calculatorIntake() {
-    let result = this.recordService.statisticModel.info.intake - this.recordService.statisticModel.info.consumption
+    let result = this.recordService.statisticModel.intake - this.recordService.statisticModel.consumption
     result = result < 0 ? 0 : result
     return result
   }

@@ -23,7 +23,6 @@ export default struct ProfilePage {
       prizes:this.prizes,
       confirm: (count:number, isAgain:boolean) => {
         this.maskDialog.close()
-        console.log('isAgain == ', isAgain)
         if(isAgain) {  //再来一次
           this.handlerAgain()
         } else {

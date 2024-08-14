@@ -1,6 +1,4 @@
 import NavHeader from '../../common/componet/NavHeader'
-// import { DietSubModel } from '../../models/CardModel'
-import FoodListItem from '../record/FoodListItem'
 
 //发现
 @Component

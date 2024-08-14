@@ -7,19 +7,19 @@ export default struct FoodListItem {
   @BuilderParam tailBuilder:() => void = this.tBuilder
 
   aboutToAppear(): void {
-    this.amount = this.amount == 0 ? this.recordModel?.info.count ?? 0 : this.amount
+    this.amount = this.amount == 0 ? this.recordModel?.count ?? 0 : this.amount
   }
 
   build() {
     Row({space: 8}) {
       //食物图片
-      Image(this.recordModel?.info.image).width(48)
+      Image(this.recordModel?.image).width(48)
       //食物信息
       Column({space: 8}) {
         //食物名称
-        Text(this.recordModel?.info.name).fontSize(16).fontWeight(FontWeight.Medium)
+        Text(this.recordModel?.name).fontSize(16).fontWeight(FontWeight.Medium)
         //食物数量
-        Text(`${this.amount}${this.recordModel?.info.unit}`).greyTextStyle()
+        Text(`${this.amount}${this.recordModel?.unit}`).greyTextStyle()
       }
       Blank()
       //尾部的组件, 默认为食物热量信息
@@ -32,7 +32,7 @@ export default struct FoodListItem {
 
   @Builder
   tBuilder() {
-    Text(`${this.recordModel?.info.calorie}千卡`).greyTextStyle()
+    Text(`${this.recordModel?.calorie}千卡`).greyTextStyle()
   }
 }
 

@@ -109,7 +109,7 @@ class RecordViewModel {
      if(categoryId == -1) {
         return list
      } else  {
-       let result = list.filter((recordItem:RecordModel) => recordItem.info.categoryId == categoryId)
+       let result = list.filter((recordItem:RecordModel) => recordItem.categoryId == categoryId)
        console.log(`type == ${type}  categoryId == ${categoryId}  count == ${result.length}`)
        return result
      }
@@ -118,28 +118,28 @@ class RecordViewModel {
    insertRecord(recordModel:RecordModel, groupId:number) {
      if (typeof recordModel === 'undefined') { return }
 
-     let groupItem = this.recordGroupList.find((groupItem:RecordGroupModel) => groupItem.info.id == groupId)
+     let groupItem = this.recordGroupList.find((groupItem:RecordGroupModel) => groupItem.id == groupId)
      if(typeof groupItem === 'undefined') return
 
-     let items = groupItem?.info.items
+     let items = groupItem?.items
      if(typeof items === 'undefined') return
 
-     let recordItem = items.find((item:RecordModel) => item.info.id == recordModel.info.id)
+     let recordItem = items.find((item:RecordModel) => item.id == recordModel.id)
 
      if(typeof recordItem !== 'undefined') {
-       let count = recordModel?.info.count ?? 0
-       recordItem.info.count += count
+       let count = recordModel?.count ?? 0
+       recordItem.count += count
      } else {
        items?.push(recordModel)
      }
 
-     groupItem.info.calorie = this.calculatingCalorie(items)
+     groupItem.calorie = this.calculatingCalorie(items)
    }
 
    calculatingCalorie(records:RecordModel[]) {
       let totalCalorie = 0
       records.forEach((record:RecordModel) => {
-        totalCalorie += (record.info.count ?? 1) * (record.info.calorie)
+        totalCalorie += (record.count ?? 1) * (record.calorie)
       })
      return totalCalorie
    }

@@ -73,12 +73,12 @@ export default struct RecordIndex {
         //组头
         ListItemGroup ({header:this.foodItemHeader(groupItem), footer: this.foodItemFooter()}) {
           //内容
-          ForEach(groupItem.info.items,(recordItem:RecordModel) => {
+          ForEach(groupItem.items,(recordItem:RecordModel) => {
             ListItem() {
               FoodListItem({recordModel: recordItem})
             }
             .onClick(() => {
-              console.log(recordItem.info.name.toString())
+              console.log(recordItem.name.toString())
               router.pushUrl({url: 'pages/detail/RecordIndexDetail', params:recordItem})
             })
           })
@@ -97,14 +97,14 @@ export default struct RecordIndex {
   foodItemHeader(groupModel:RecordGroupModel) {
     Row({space: 4}) {
       //图标
-      Image(groupModel.info.icon).width(24)
+      Image(groupModel.icon).width(24)
       //标题
-      Text(groupModel.info.name).fontSize(18).fontWeight(FontWeight.Bold)
+      Text(groupModel.name).fontSize(18).fontWeight(FontWeight.Bold)
       //建议
-      Text(`建议${groupModel.info.min}~${groupModel.info.max}千卡`).greyTextStyle()
+      Text(`建议${groupModel.min}~${groupModel.max}千卡`).greyTextStyle()
       Blank()
       //热量
-      Text(groupModel.info.calorie?.toFixed(0)).greyTextStyle($r('app.color.primary_color'))
+      Text(groupModel.calorie?.toFixed(0)).greyTextStyle($r('app.color.primary_color'))
       //单位
       Text('千卡').greyTextStyle()
       //添加按钮
