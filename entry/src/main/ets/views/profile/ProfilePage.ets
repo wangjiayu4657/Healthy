@@ -1,6 +1,6 @@
 import { CardModel } from '../../models/CardModel'
 import LuckyCard from './LuckyCard'
-import { JSON } from '@kit.ArkTS'
+
 
 //我的
 @Component
@@ -127,6 +127,7 @@ struct MaskDialog {
 
       Image(this.prizes ?? this.handlerImage())
         .width(260)
+        .interpolation(ImageInterpolation.High)
 
       Button(this.prizes ? '再来一次' : '开心收下')
         .width(140)

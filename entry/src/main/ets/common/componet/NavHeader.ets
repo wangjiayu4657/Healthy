@@ -4,7 +4,7 @@ import { router } from '@kit.ArkUI'
 export default struct NavHeader {
   title?: ResourceStr
   btnTitle?: ResourceStr
-  color?:ResourceStr = '#36D'
+  bgColor?:ResourceStr = '#36D'
 
   @BuilderParam headBuilder: () => void = this.backBtn
   @BuilderParam tailBuilder: () => void = this.moreBtn
@@ -25,7 +25,7 @@ export default struct NavHeader {
     .width('100%')
     .height(80)
     .padding({left: 5, right: 15})
-    .backgroundColor(this.color)
+    .backgroundColor(this.bgColor)
     .justifyContent(FlexAlign.SpaceAround)
   }
 
@@ -52,10 +52,12 @@ export default struct NavHeader {
 
   //更多按钮
   @Builder moreBtn() {
-    Button(this.btnTitle,{type: ButtonType.Normal})
+    Button(this.btnTitle ?? '更多',{type: ButtonType.Normal})
+      .width(80)
       .fontSize(16)
+      .fontColor(Color.White)
       .fontWeight(FontWeight.Medium)
-      .backgroundColor(Color.Blue)
+      .backgroundColor(Color.Transparent)
       .borderRadius(5)
       .onClick(() => {
         console.log('点击更多')

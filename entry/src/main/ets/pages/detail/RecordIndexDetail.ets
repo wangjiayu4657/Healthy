@@ -32,7 +32,7 @@ struct RecordIndexDetail {
       //头部组件
       NavHeader({
         title: '详情',
-        color: $r('app.color.primary_color'),
+        bgColor: $r('app.color.primary_color'),
         tailBuilder:() => { this.tailBuilder() }
       })
 
